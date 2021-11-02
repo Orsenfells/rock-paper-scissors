@@ -7,7 +7,9 @@ function getRandomMove() {
 function computerPlay() {
     return getRandomMove()
 }
+function gameScore(userScore, computerScore) {
 
+}
 function playRound(playerSelection, computerPlay) {
     if(playerSelection.toLowerCase() === 'rock') {
         if(computerPlay === 'scissors') {
@@ -35,5 +37,14 @@ function playRound(playerSelection, computerPlay) {
         } else if (computerPlay === 'rock') {
             return "You Lose! Rock beats scissors"
         }
+    }
+}
+function getUserMove() {
+    return prompt("Rock Paper Scissors")
+}
+function game() {
+    for(let i = 0; i < 5; i++) {
+        return playRound(getUserMove(), computerPlay() )
+        console.log(playRound('rock', computerPlay))
     }
 }
