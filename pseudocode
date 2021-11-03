@@ -1,8 +1,16 @@
 ask user for move input
 get the computers move
     randomly assign the computer rock, paper, or scissors
-compare the computers move to the user move
+play the game and compare the computers move to the user move
 if the users move beats the computers move
     let the player know they won
+    add to the players score
 else if the user loses to the computers
     let the player know they lost
+    add to the computers score
+after all the rounds are done report the winner
+
+
+8:07 nov 1
+ Looking at updating the score variable declared in the game function when the round is over
+ 
