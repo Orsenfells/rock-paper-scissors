@@ -7,9 +7,7 @@ function getRandomMove() {
 function computerPlay() {
     return getRandomMove()
 }
-function gameScore(userScore, computerScore) {
 
-}
 function playRound(playerSelection, computerPlay, userWin) {
     if(playerSelection.toLowerCase() === 'rock') {
         if(computerPlay === 'scissors') {
@@ -44,6 +42,13 @@ function playRound(playerSelection, computerPlay, userWin) {
 function getUserMove() {
     return prompt("Rock Paper Scissors", "rock")
 }
+function getWinner(playerScore, computerScore) {
+    if(playerScore > computerScore) {
+        alert("The Player Wins!")
+    } else if (playerScore < computerScore) {
+        alert("The Computer Wins!")
+    } else alert("It's a Tie!")
+}
 function game() {
     let userScore = 0;
     let computerScore = 0;
@@ -56,4 +61,5 @@ function game() {
         let result = playRound(getUserMove(), computerPlay(), updateScore)
         console.log(result, userScore, computerScore)
     }
+    getWinner(userScore, computerScore)
 }
