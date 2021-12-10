@@ -3,18 +3,24 @@ function getRandomMove() {
     
     return availableMoves[Math.floor(Math.random()*availableMoves.length)]
 }
-
-function computerPlay() {
-    return getRandomMove()
+function getUserMove() {
+    return prompt("Rock Paper Scissors", "rock")
+}
+function getWinner(playerScore, computerScore) {
+    if(playerScore > computerScore) {
+        alert("The Player Wins!")
+    } else if (playerScore < computerScore) {
+        alert("The Computer Wins!")
+    } else alert("It's a Tie!")
 }
 
-function playRound(playerSelection, computerPlay, userWin) {
+function playRound(playerSelection, computerPlay) {
     if(playerSelection.toLowerCase() === 'rock') {
         if(computerPlay === 'scissors') {
-            userWin(true)
+
             return "You win! Rock beats scissors"
         } else if (computerPlay === 'paper') {
-            userWin(false)
+
             return "You Lose! Paper beats Rock"
         } else if (computerPlay === 'rock') {
             return "It's a tie! You both played Rock"
@@ -39,16 +45,7 @@ function playRound(playerSelection, computerPlay, userWin) {
         }
     }
 }
-function getUserMove() {
-    return prompt("Rock Paper Scissors", "rock")
-}
-function getWinner(playerScore, computerScore) {
-    if(playerScore > computerScore) {
-        alert("The Player Wins!")
-    } else if (playerScore < computerScore) {
-        alert("The Computer Wins!")
-    } else alert("It's a Tie!")
-}
+
 function game() {
     let userScore = 0;
     let computerScore = 0;
@@ -61,5 +58,18 @@ function game() {
         let result = playRound(getUserMove(), computerPlay(), updateScore)
         console.log(result, userScore, computerScore)
     }
+    console.log(userScore, computerScore)
     getWinner(userScore, computerScore)
 }
+const rockButton = document.querySelector('#selectRock');
+const paperButton = document.querySelector('#selectPaper');
+const scissorsButton = document.querySelector('#selectScissors');
+
+let score = 0;
+function handler(e) {
+    let playerMove = e.target.textContent.toLowerCase()
+    let computerMove = getRandomMove() 
+
+    console.log(playRound(playerMove, computerMove))
+}
+rockButton.addEventListener('click', handler)
