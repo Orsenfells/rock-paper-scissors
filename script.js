@@ -45,7 +45,13 @@ function playRound(playerSelection, computerPlay) {
         }
     }
 }
+function updateDom(playerSelection, computerSelection) {
+    let domPlayerSelection = document.querySelector('#playerSelection')
+    let domComputerSelection = document.querySelector('#computerSelection')
 
+    domPlayerSelection.textContent = `Player Move: ${playerSelection}`
+    domComputerSelection.textContent = `Computer Move: ${computerSelection}`
+}
 function game() {
     let userScore = 0;
     let computerScore = 0;
@@ -64,12 +70,11 @@ function game() {
 const rockButton = document.querySelector('#selectRock');
 const paperButton = document.querySelector('#selectPaper');
 const scissorsButton = document.querySelector('#selectScissors');
-
-let score = 0;
+const buttons = [rockButton, paperButton, scissorsButton]
 function handler(e) {
     let playerMove = e.target.textContent.toLowerCase()
     let computerMove = getRandomMove() 
-
+    updateDom(playerMove, computerMove)
     console.log(playRound(playerMove, computerMove))
 }
-rockButton.addEventListener('click', handler)
+buttons.forEach(button => button.addEventListener('click', handler))
